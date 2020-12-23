@@ -22,3 +22,58 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# テーブル設計
+
+## users テーブル
+
+| Column           | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| nickname         | string  | null: false |
+| email            | string  | null: false |
+| password         | string  | null: false |
+| family_name      | string  | null: false |
+| first_name       | string  | null: false |
+| family_name_kana | string  | null: false |
+| first_name_kana  | string  | null: false |
+
+### Association
+
+- has_many :houses
+- has_many :items
+
+
+## Houses テーブル
+
+| Column      | Type   | Options |
+| ----------- | ------ | ------- |
+| name        | string |         |
+| entrance    | string |         |
+| ldk         | string |         |
+| room        | string |         |
+| toilet_bath | string |         |
+| other       | string |         |
+| bag         | string |         |
+
+### Association
+
+- belongs_to :users
+- has_one :items
+
+
+## items テーブル
+
+| Column     | Type    | Options     |
+| ---------- | ------- | ----------- |
+| name       | string  | null: false |
+| genre      | integer | null: false |
+| purpose    | integer | null: false |
+| bought_day | string  | null: false |
+| price      | integer |             |
+
+
+### Association
+
+- belongs_to :users
+- belongs_to :houses
